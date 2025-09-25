@@ -1,0 +1,119 @@
+* {
+    padding: 0;
+    margin: 0;
+    font-family: "Century Gothic", sans-serif;
+    text-align: center;
+    color: white;
+}
+
+body {
+    background-image: url('IMG/psyduck.jpeg');
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+}
+
+form {
+    padding: 5% 2%;
+    background-color: #381b1ba6;
+    margin: 10% auto;
+    border-radius: 10px;
+    max-width: 400px; /* Ancho máximo */
+}
+
+h2 {
+    text-align: center;
+    padding: 12px;
+    color: rgb(206, 203, 203);
+}
+
+.formulario-agregar, .formulario-actualizar, .formulario-eliminar{
+    padding: 1% 1%;
+    background-color: #381b1ba6;
+    margin: 10px 10px;
+    border-radius: 10px;
+    max-width: 400px; /* Ancho máximo */
+}
+
+h1 {
+    text-align: center;
+    padding: 12px;
+    color: rgb(206, 203, 203);
+}
+
+input {
+    width: calc(100% - 20px);
+    padding: 9px;
+    margin-top: 12px;
+    font-size: 16px;
+    background-color: transparent;
+    border: 1px solid white;
+    color: white;
+}
+
+input[type='submit'] {
+    background-color: #48e;
+    color: #fff;
+    width: calc(80% - 20px);
+    margin: 5% 10%;
+    margin-top: 22px;
+    border: none;
+    cursor: pointer;
+}
+
+.ok, .bad, .off {
+    text-align: center;
+    padding: 12px;
+    border-radius: 5px;
+}
+
+.ok {
+    background-color: #1e6;
+}
+
+.bad {
+    background-color: #a22;
+}
+
+.off {
+    background-color: rgb(0, 0, 0);
+}
+
+.mensaje {
+    max-width: 350px;
+    margin: auto;
+    margin-top: 5%;
+    padding: 6px;
+    color: red;
+}
+
+h6 {
+    text-align: center;
+    padding: 12px;
+    color: rgb(206, 203, 203);
+    line-height: 20px;
+}
+
+#tabla-usuarios th, #tabla-usuarios td {
+    border: 1px solid #ddd;
+    padding: 8px;
+    text-align: left;
+    color: rgb(255, 47, 68); 
+}
+
+.nose{
+    font-size: 100px;
+    background-color: rgba(216, 101, 101, 0.667);
+}
+
+h3{
+    color: rgb(0, 0, 0);
+}
+
+#LinkAdmin{
+    background-color: rgba(68, 136, 238, 0.533);
+}
+
+#marca{
+    background-color: rgba(216, 101, 101, 0.667);
+}
