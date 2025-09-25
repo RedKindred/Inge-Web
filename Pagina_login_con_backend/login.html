@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login</title>
+  <link rel="stylesheet" href="login.css">
+</head>
+<body>
+  <h1>Sistema de login</h1>
+
+  <form id="loginForm">
+    <p>
+      Correo:
+      <input type="email" id="usuario" placeholder="Ingresa su correo electrónico" required>
+    </p>
+
+    <p>
+      Contraseña:
+      <input type="password" id="password" placeholder="Ingrese su contraseña" required>
+    </p>
+
+    <input type="submit" value="Ingresar">
+  </form>
+
+  <!-- Aquí se mostrarán los mensajes -->
+  <p id="mensaje"></p>
+
+  <script src="validacion.js"></script>
+</body>
+</html>
+
