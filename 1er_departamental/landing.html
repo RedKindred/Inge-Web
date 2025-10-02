@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Tienda Héroes — Landing</title>
+  <link rel="stylesheet" href="landing.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <h1 class="logo">Tienda Héroes</h1>
+      <nav class="menu">
+        <a href="landing.html">Inicio</a>
+        <a href="user.html">Usuario</a>
+        <a href="organizer.html">Organizador</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="wrap">
+      <h2>¡Cómics de superhéroes para todos!</h2>
+      <button class="btn" id="btnRecargar">Recargar personajes</button>
+    </div>
+  </section>
+
+  <main class="wrap">
+    <h3>Personajes Marvel comics</h3>
+    <div id="status" class="status">Cargando…</div>
+    <table class="tabla" id="tablaCatalogo">
+      <thead>
+        <tr>
+          <th>Imagen</th>
+          <th>Nombre</th>
+          <th>Descripción</th>
+          <th>Seleccionar</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+
+  <footer class="footer">
+    <div class="wrap">© 2025 Tienda Héroes — Demo rápida</div>
+  </footer>
+
+  <script>
+  const API_URL = 'https://gateway.marvel.com:443/v1/public/characters?ts=1&limit=100&apikey=66871a4efa9fb001fd69fe57f6b84ffc&hash=3d44a2a8f21791dc555a103aa393bb57';
+  const tbody = document.querySelector('#tablaCatalogo tbody');
+  const statusEl = document.getElementById('status');
+
+  async function cargar() {
+    statusEl.textContent = 'Cargando…';
+    tbody.innerHTML = '';
+    try {
+      const res = await fetch(API_URL);
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+      const data = await res.json();
+      const items = (data?.data?.results) || [];
+      if (!items.length) {
+        statusEl.textContent = 'Sin resultados.';
+        return;
+      }
+      statusEl.textContent = 'Listo.';
+      for (const p of items) {
+        const img = p.thumbnail ? (p.thumbnail.path + '.' + p.thumbnail.extension) : 'https://via.placeholder.com/120x120?text=Sin+img';
+        const tr = document.createElement('tr');
+        tr.innerHTML = `
+          <td><img src="${img}" alt="${p.name}" class="thumb"></td>
+          <td>${p.name || 'Sin nombre'}</td>
+          <td>${(p.description || 'Sin descripción').slice(0,140)}${(p.description||'').length>140 ? '…' : ''}</td>
+          <td><button class="btn btn-ok" data-name="${p.name}">Seleccionar</button></td>
+        `;
+        tbody.appendChild(tr);
+      }
+    } catch (e) {
+      statusEl.textContent = 'No se pudo cargar (quizá CORS).';
+    }
+  }
+
+  document.getElementById('btnRecargar').addEventListener('click', cargar);
+  document.addEventListener('DOMContentLoaded', cargar);
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('button.btn-ok');
+    if (!btn) return;
+    alert('Seleccionado: ' + btn.getAttribute('data-name'));
+  });
+  </script>
+</body>
+</html>

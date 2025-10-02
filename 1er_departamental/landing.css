@@ -1,0 +1,22 @@
+/*Estilo para la landing page*/
+*{box-sizing:border-box}
+body{margin:0; font-family: Arial, Helvetica, sans-serif; background:#f7f7f7; color:#222;}
+.wrap{max-width:1080px; margin:0 auto; padding:0 16px;}
+.topbar{background:#222; color:#fff;}
+.topbar .wrap{display:flex; align-items:center; justify-content:space-between; padding:10px 16px;}
+.logo{margin:0; font-size:20px;}
+.menu a{color:#fff; text-decoration:none; margin-left:10px; font-size:14px;}
+.menu a:hover{text-decoration:underline;}
+.hero{background:#e7f0ff; border-bottom:1px solid #d5e4ff;}
+.hero .wrap{padding:18px 0;}
+.btn{padding:8px 12px; border:1px solid #ccc; background:#fff; border-radius:4px; cursor:pointer;}
+.btn:hover{background:#f0f0f0;}
+.btn-ok{background:#31c27c; color:#fff; border-color:#31c27c;}
+.small{color:#555; font-size:13px}
+.status{margin:8px 0 12px; color:#555; font-size:14px}
+.tabla{width:100%; border-collapse:collapse; background:#fff; border:1px solid #ddd;}
+.tabla th, .tabla td{padding:10px; border-bottom:1px solid #eee; text-align:left; vertical-align:top;}
+.tabla thead th{background:#f1f1f1; font-size:13px;}
+.thumb{width:80px; height:80px; object-fit:cover; border:1px solid #ddd;}
+.footer{background:#fafafa; border-top:1px solid #eee; margin-top:18px;}
+.footer .wrap{padding:12px 0; text-align:center; font-size:14px;}

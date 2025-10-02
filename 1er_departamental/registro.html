@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Crear cuenta — Tienda Héroes</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Tienda Héroes</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <h2>Crear cuenta</h2>
+      <form id="form-reg">
+        <div class="form-row">
+          <label for="reg-nombre">Nombre</label>
+          <input id="reg-nombre" type="text" placeholder="Tu nombre" required>
+        </div>
+        <div class="form-row">
+          <label for="reg-correo">Correo</label>
+          <input id="reg-correo" type="email" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+        <div class="form-row">
+          <label for="reg-pass">Contraseña</label>
+          <input id="reg-pass" type="password" placeholder="Mínimo 6 caracteres" minlength="6" required>
+        </div>
+        <div class="form-row">
+          <label for="reg-pass2">Repite la contraseña</label>
+          <input id="reg-pass2" type="password" placeholder="Confirma tu contraseña" minlength="6" required>
+        </div>
+        <div class="actions">
+          <button class="btn primary" type="submit">Registrarme</button>
+          <a class="btn" href="/login">Ya tengo cuenta</a>
+        </div>
+        <div id="reg-msg" class="msg"></div>
+      </form>
+      <div class="links">
+        <a href="/">Ir a la landing</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="validacion.js"></script>
+</body>
+</html>

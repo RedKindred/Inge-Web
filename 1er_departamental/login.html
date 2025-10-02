@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Iniciar sesión — Tienda Héroes</title>
+  <link rel="stylesheet" href="auth.css">
+</head>
+<body>
+  <header class="header">
+    <h1>Tienda Héroes</h1>
+  </header>
+
+  <main class="main">
+    <div class="card">
+      <h2>Iniciar sesión</h2>
+      <form id="form-login">
+        <div class="form-row">
+          <label for="login-correo">Correo</label>
+          <input id="login-correo" type="email" placeholder="tucorreo@ejemplo.com" required>
+        </div>
+        <div class="form-row">
+          <label for="login-pass">Contraseña</label>
+          <input id="login-pass" type="password" placeholder="••••••" required>
+        </div>
+        <div class="actions">
+          <button class="btn primary" type="submit">Entrar</button>
+          <a class="btn" href="/registro">Crear cuenta</a>
+        </div>
+        <div id="login-msg" class="msg"></div>
+      </form>
+      <div class="links">
+        <a href="/">Ir a la landing</a>
+      </div>
+    </div>
+  </main>
+
+  <script src="validacion.js"></script>
+</body>
+</html>

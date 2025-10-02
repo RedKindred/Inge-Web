@@ -1,0 +1,24 @@
+
+/*Estilo simple para login y registro*/
+*{box-sizing:border-box}
+body{margin:0; font-family: Arial, Helvetica, sans-serif; background:#f6f6f6; color:#222;}
+.header{background:#222; color:#fff; padding:10px 16px;}
+.header h1{margin:0; font-size:18px}
+.main{max-width:420px; margin:18px auto; padding:0 12px;}
+.card{background:#fff; border:1px solid #ddd; border-radius:6px; padding:14px;}
+.card h2{margin:0 0 8px; font-size:18px;}
+.form-row{display:grid; gap:6px; margin:10px 0;}
+input[type="email"], input[type="password"], input[type="text"]{
+  padding:8px; border:1px solid #ccc; border-radius:4px;
+}
+.actions{display:flex; gap:8px; align-items:center; margin-top:6px;}
+.btn{padding:8px 10px; border:1px solid #ccc; border-radius:4px; background:#fff; cursor:pointer;}
+.btn.primary{background:#2d6cdf; border-color:#2d6cdf; color:#fff;}
+.btn:hover{opacity:.95}
+.links{margin-top:10px; font-size:13px;}
+.links a{color:#2d6cdf; text-decoration:none; margin-right:10px;}
+.links a:hover{text-decoration:underline;}
+.msg{margin-top:8px; font-size:13px;}
+.msg.ok{color:#1e7a52}
+.msg.error{color:#a33b3b}
+.msg.info{color:#444}
