@@ -1,0 +1,20 @@
+*{box-sizing:border-box}
+body{margin:0; font-family: Arial, Helvetica, sans-serif; background:#f7f7f7; color:#222;}
+.wrap{max-width:1080px; margin:0 auto; padding:0 16px;}
+.topbar{background:#222; color:#fff;}
+.topbar .wrap{display:flex; align-items:center; justify-content:space-between; padding:10px 16px;}
+.menu a{color:#fff; text-decoration:none; margin-left:10px; font-size:14px;}
+.menu a:hover{text-decoration:underline;}
+h2{margin:16px 0 8px}
+.panel{background:#fff; border:1px solid #ddd; padding:10px; border-radius:4px; margin-bottom:12px;}
+.fila{display:grid; grid-template-columns: 120px 1fr 120px 1fr; gap:8px; margin-bottom:8px;}
+@media (max-width:720px){ .fila{ grid-template-columns: 1fr; } }
+.panel input{padding:8px; border:1px solid #ccc; border-radius:4px;}
+.btn{padding:6px 10px; border:1px solid #ccc; border-radius:4px; background:#fff; cursor:pointer;}
+.btn:hover{background:#f0f0f0;}
+.danger{background:#e74c3c; color:#fff; border-color:#e74c3c;}
+.status{color:#555; margin:8px 0}
+.tabla{width:100%; border-collapse:collapse; background:#fff; border:1px solid #ddd;}
+.tabla th,.tabla td{padding:10px; border-bottom:1px solid #eee; vertical-align:top}
+.tabla thead th{background:#f1f1f1; font-size:13px;}
+.thumb{width:70px; height:70px; object-fit:cover; border:1px solid #ddd;}

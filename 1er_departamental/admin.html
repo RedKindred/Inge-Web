@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Admin — Usuarios</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="wrap">
+      <h1 class="logo">Tienda Héroes</h1>
+      <nav class="menu">
+        <a href="landing.html">Inicio</a>
+        <a href="user.html">Usuario</a>
+        <a href="organizer.html">Organizador</a>
+        <a href="admin.html">Admin</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="wrap">
+    <h2>CRUD de usuarios</h2>
+
+    <form id="formUser" class="panel">
+      <div class="fila">
+        <label>Correo</label><input id="correo">
+        <label>Nombre</label><input id="nombre">
+      </div>
+      <div class="fila">
+        <label>Rol</label>
+        <select id="rol"><option>Cliente</option><option>Operador</option><option>Administrador</option></select>
+        <label>Estado</label>
+        <select id="estado"><option value="1">Activo</option><option value="0">Inactivo</option></select>
+      </div>
+      <button type="button" class="btn" id="btnCrear">Crear</button>
+      <button type="button" class="btn" id="btnActualizar" disabled>Actualizar</button>
+      <button type="button" class="btn danger" id="btnEliminar" disabled>Eliminar</button>
+      <input type="hidden" id="idUser">
+    </form>
+
+    <h3>Usuarios</h3>
+    <div id="status" class="status"></div>
+    <table class="tabla" id="tablaUsuarios">
+      <thead>
+        <tr><th>ID</th><th>Correo</th><th>Nombre</th><th>Rol</th><th>Estado</th><th>¿Activa?</th><th>Acción</th></tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </main>
+
+  <script>
+  const API = {
+    list: () => fetch('/api/users').then(r=>r.json()),
+    create: (u) => fetch('/api/users', {method:'POST', headers:{'Content-Type':'application/json'}, body:JSON.stringify(u)}).then(r=>r.json()),
+    update: (id, u) => fetch('/api/users/'+id, {method:'PUT', headers:{'Content-Type':'application/json'}, body:JSON.stringify(u)}).then(r=>r.json()),
+    del: (id) => fetch('/api/users/'+id, {method:'DELETE'}).then(r=>r.json()),
+  };
+  const tbody = document.querySelector('#tablaUsuarios tbody');
+  const statusEl = document.getElementById('status');
+  const f = (id)=>document.getElementById(id);
+
+  async function cargar(){
+    statusEl.textContent = 'Cargando…';
+    tbody.innerHTML = '';
+    const data = await API.list();
+    statusEl.textContent = '';
+    (data.users||[]).forEach(u=>{
+      const tr = document.createElement('tr');
+      tr.innerHTML = \`
+        <td>\${u.id}</td>
+        <td>\${u.correo}</td>
+        <td>\${u.nombre}</td>
+        <td>\${u.rol}</td>
+        <td>\${u.estado_texto}</td>
+        <td>\${u.activa ? 'Sí' : 'No'}</td>
+        <td><button class="btn sel" data-id="\${u.id}">Seleccionar</button></td>
+      \`;
+      tbody.appendChild(tr);
+    });
+  }
+
+  document.addEventListener('click', (e)=>{
+    const btn = e.target.closest('.sel');
+    if (!btn) return;
+    const row = btn.closest('tr').children;
+    f('idUser').value = row[0].textContent;
+    f('correo').value = row[1].textContent;
+    f('nombre').value = row[2].textContent;
+    f('rol').value = row[3].textContent;
+    f('estado').value = row[5].textContent.trim() === 'Sí' ? '1' : '0';
+    f('btnActualizar').disabled = false;
+    f('btnEliminar').disabled = false;
+  });
+
+  f('btnCrear').addEventListener('click', async ()=>{
+    const u = { correo:f('correo').value, nombre:f('nombre').value, rol:f('rol').value, estado:f('estado').value };
+    await API.create(u); await cargar();
+  });
+  f('btnActualizar').addEventListener('click', async ()=>{
+    const id = f('idUser').value; if (!id) return;
+    const u = { correo:f('correo').value, nombre:f('nombre').value, rol:f('rol').value, estado:f('estado').value };
+    await API.update(id, u); await cargar();
+  });
+  f('btnEliminar').addEventListener('click', async ()=>{
+    const id = f('idUser').value; if (!id) return;
+    await API.del(id); await cargar();
+  });
+
+  document.addEventListener('DOMContentLoaded', cargar);
+  </script>
+</body>
+</html>

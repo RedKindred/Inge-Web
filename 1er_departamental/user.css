@@ -1,0 +1,126 @@
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  background: #f4f6f9;
+  color: #333;
+}
+
+/* Barra superior */
+.topbar {
+  background: #20232a;
+  color: #fff;
+  padding: 1rem 0;
+  margin-bottom: 2rem;
+}
+
+.topbar .wrap {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 90%;
+  margin: auto;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+
+.menu a {
+  color: #fff;
+  margin-left: 1rem;
+  text-decoration: none;
+  transition: color 0.3s;
+}
+
+.menu a:hover,
+.menu a.activo {
+  color: #61dafb;
+}
+
+/* Contenedor principal */
+.wrap {
+  width: 90%;
+  max-width: 1000px;
+  margin: auto;
+}
+
+/* Seccion bienvenida */
+.bienvenida {
+  background: #fff;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+/* Perfil */
+.perfil-section {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  margin-bottom: 2rem;
+}
+
+.perfil-card p {
+  margin-bottom: 0.8rem;
+  font-size: 1rem;
+}
+
+.perfil-card span {
+  font-weight: 600;
+}
+
+#userEstado.activo {
+  color: green;
+  font-weight: bold;
+}
+
+#userEstado.inactivo {
+  color: red;
+  font-weight: bold;
+}
+
+/* Carrito */
+.carrito-section {
+  background: #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+.hint {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 1rem;
+}
+
+.carrito {
+  list-style: none;
+  padding: 0;
+}
+
+.carrito li {
+  background: #f1f1f1;
+  margin-bottom: 0.5rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+}
+
+/* Footer */
+.footer {
+  background: #20232a;
+  color: #aaa;
+  padding: 1rem;
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
