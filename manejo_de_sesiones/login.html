@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Login</title>
+  <style>
+    body { font-family: system-ui, Arial, sans-serif; max-width: 420px; margin: 6vh auto; }
+    .error { color: #b00020; }
+    .success { color: #00701a; }
+    label { display:block; margin: 12px 0 4px; }
+    input { width:100%; padding:10px; box-sizing:border-box; }
+    button { margin-top: 16px; padding:10px 14px; width:100%; }
+    small { display:block; height:18px; }
+  </style>
+</head>
+<body>
+  <h2>Iniciar sesión</h2>
+
+  <form id="loginForm" novalidate>
+    <label for="usuario">Correo</label>
+    <input type="email" id="usuario" placeholder="tu@correo.com" required />
+    <small id="errorUsuario" class="error"></small>
+
+    <label for="password">Contraseña</label>
+    <input type="password" id="password" placeholder="********" required />
+    <small id="errorPassword" class="error"></small>
+
+    <button type="submit">Entrar</button>
+
+    <p id="mensaje"></p>
+  </form>
+
+  <script src="/js/validacion.js"></script>
+  <script>
+  (function () {
+    const form = document.getElementById("loginForm");
+    form.addEventListener("submit", async function afterFrontend(e) {
+      const msj = document.getElementById("mensaje");
+      if (msj && msj.className === "success") {
+        const usuario = document.getElementById("usuario").value.trim();
+        const password = document.getElementById("password").value;
+        try {
+          const r = await fetch("/api/login", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            credentials: "include",
+            body: JSON.stringify({ usuario, password })
+          });
+          const data = await r.json();
+          if (!r.ok || !data.ok) {
+            msj.className = "error";
+            msj.textContent = data.error || "Error de autenticación";
+            return;
+          }
+          msj.className = "success";
+          msj.textContent = "Inicio de sesión correcto.";
+        } catch (err) {
+          msj.className = "error";
+          msj.textContent = "No se pudo contactar al servidor.";
+        }
+      }
+    });
+  })();
+  </script>
+</body>
+</html>

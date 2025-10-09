@@ -1,0 +1,22 @@
+{
+  "name": "inge-login-pack",
+  "version": "1.0.0",
+  "private": true,
+  "scripts": {
+    "start": "node validar.js",
+    "dev": "nodemon validar.js"
+  },
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.20.3",
+    "cookie-parser": "^1.4.7",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "mysql2": "^3.15.2"
+  },
+  "description": "- `public/login.html` — Única página (usa tu `public/js/validacion.js`). - `public/js/validacion.js` — Tu archivo de validación (sin cambios). - `validar.js` — Servidor Express: valida password en backend, genera token (JWT), lo guarda en `session_token` y setea cookie HttpOnly `st`. - `db.js` — Conexión MySQL local (root/admin), base `inge_web`. - `mysql_setup.sql` — Crea la base y la tabla `session_token`. - `package.json` — Dependencias y scripts.",
+  "main": "db.js",
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
